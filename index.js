@@ -110,22 +110,22 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-    constructor(attributes) {
-      this.name = attributes.name;
-      this.age = attributes.age;
-      this.location = attributes.location;
-      this.gradeValue = attributes.gradeValue;
+  constructor(attributes) {
+    this.name = attributes.name;
+    this.age = attributes.age;
+    this.location = attributes.location;
+    this.gradeValue = attributes.gradeValue;
+  }
+  speak() {
+    return `Hello my name is ${this.name}, I am from ${this.location}.`;
+  }
+  graduate() {
+    if(this.gradeValue > 70) {
+      return "Congrats! You graduated";
+    } else {
+      return "Go back to grading!";
     }
-    speak() {
-      return `Hello my name is ${this.name}, I am from ${this.location}.`;
-    }
-    graduate() {
-      if(this.gradeValue > 70) {
-        return "Congrats! You graduated";
-      } else {
-        return "Go back to grading!";
-      }
-    }
+  }
 }
 
 /*
@@ -153,13 +153,17 @@ class Instructor extends Lambdasian {
     return `Today we are learning about ${subject}`;
   }
   grade(student, subject) {
-    return `${student.name} receives a perfect score on ${subject}`;
+    return `${student.name} receives a ${student.gradeValue} on ${subject}`;
   }
   randomlyChange() {
-    let randomNumber = Math.random();
-    this.gradeValue += randomNumber;
+    let randomNumberOne = Math.random() * 10;
+    let randomNumberTwo = Math.random() * 10;
+    if(randomNumberOne < randomNumberTwo) {
+      studentOne.gradeValue += randomNumberOne;
+    } else {
+      studentOne.gradeValue -= randomNumberOne;
+    }
   }
-
 }
 
 /*
@@ -230,6 +234,23 @@ class ProjectManager extends Instructor {
       + This method, when called, will check the grade of the student and see if they're ready to graduate from Lambda School
       + If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
 */
+
+const studentOne = new Lambdasian({
+  name: "Johnny",
+  age: 24,
+  location: "USA",
+  gradeValue: 70
+});
+
+const instructorOne = new Instructor({
+  name: "Matt Spencer",
+  age: 32,
+  location: "USA"
+});
+
+instructorOne.grade(studentOne, "Computer Science");
+instructorOne.randomlyChange();
+studentOne.graduate();
 
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
