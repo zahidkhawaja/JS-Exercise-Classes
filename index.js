@@ -114,9 +114,17 @@ class Lambdasian {
       this.name = attributes.name;
       this.age = attributes.age;
       this.location = attributes.location;
+      this.gradeValue = attributes.gradeValue;
     }
     speak() {
       return `Hello my name is ${this.name}, I am from ${this.location}.`;
+    }
+    graduate() {
+      if(this.gradeValue > 70) {
+        return "Congrats! You graduated";
+      } else {
+        return "Go back to grading!";
+      }
     }
 }
 
@@ -146,6 +154,10 @@ class Instructor extends Lambdasian {
   }
   grade(student, subject) {
     return `${student.name} receives a perfect score on ${subject}`;
+  }
+  randomlyChange() {
+    let randomNumber = Math.random();
+    this.gradeValue += randomNumber;
   }
 
 }
