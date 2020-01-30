@@ -41,7 +41,23 @@ class Airplane {
 */
 
 class Person {
-
+  constructor(name, age) {
+    this.stomach = [];
+    this.name = name;
+    this.age = age;
+  }
+  eat(someFood) {
+    if(this.stomach.length < 10) {
+      this.stomach.push(someFood);
+    }
+  }
+  poop() {
+    this.stomach = [];
+    console.log(this.stomach);
+  }
+  toString() {
+    return `${this.name}, ${this.age}`;
+  }
 }
 
 /*
